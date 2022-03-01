@@ -1,8 +1,10 @@
 import 'dotenv/config'
 
 import VkBot from 'node-vk-bot-api'
+
+import { CronStatuses } from './enum/cron-statuses.enum'
+
 import Logger from '../logger'
-import { CronStatuses } from './cron-statuses'
 
 export type SchedulerWork = (props: {
   bot: VkBot
