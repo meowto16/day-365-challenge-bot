@@ -12,6 +12,7 @@ async function bootstrap() {
   const bot = new VkBot({
     token: process.env.VK_MESSAGES_API_KEY,
     group_id: +process.env.VK_GROUP_ID,
+    confirmation: process.env.VK_MESSAGES_CONFIRMATION,
   });
 
   bot.command('/help', (ctx) => {
@@ -74,16 +75,6 @@ async function bootstrap() {
     const ukraineStickers = [...Array(to - from + 1).keys()].map(k => k + from)
     const randomSticker = getRandomArrayElement(ukraineStickers)
     ctx.reply('', [], null, randomSticker)
-  })
-
-  bot.startPolling((err) => {
-    if (err) {
-      console.error(err)
-    } else {
-      console.log('Successfull polling')
-    }
-
-    return {}
   })
 }
 
