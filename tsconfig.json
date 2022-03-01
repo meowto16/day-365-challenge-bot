@@ -1,15 +1,11 @@
 {
   "compilerOptions": {
+    "target": "esnext",
+    "esModuleInterop": true,
     "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "downlevelIteration": true
   }
 }
