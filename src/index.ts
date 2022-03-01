@@ -20,6 +20,10 @@ app.use(bodyParser.json())
 
 app.post('/', bot.webhookCallback)
 
+app.post('/schedule', (req, res) => {
+  
+})
+
 app.listen(process.env.PORT || 8080, () => {
   Logger.success(`BOT started on port: ${process.env.PORT}`)
   initializeCommands(bot)
