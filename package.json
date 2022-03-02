@@ -14,15 +14,17 @@
     "dev": "./node_modules/nodemon/bin/nodemon.js",
     "start": "node ./dist/index.js",
     "postinstall": "npm run build",
-    "schedule:hello-world": "ts-node ./src/cron/schedules/hello-world.ts"
+    "schedule:hello-world": "ts-node ./src/cron/schedules/hello-world.ts",
+    "schedule:notify-before-day-end": "ts-node src/cron/schedules/notify-before-day-end.ts"
   },
   "dependencies": {
+    "@types/node": "^17.0.21",
+    "axios": "^0.26.0",
     "body-parser": "^1.19.2",
     "chalk": "^4.1.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "node-vk-bot-api": "^3.5.0",
-    "@types/node": "^17.0.21",
     "ts-node": "^10.6.0"
   },
   "devDependencies": {

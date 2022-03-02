@@ -8,7 +8,7 @@ const scheduler = new Scheduler(schedule.name)
 scheduler.exec(async ({ bot }) => {
   await bot.execute('messages.send', {
     message: `Hello world from schedule. Current time: ${new Date().toLocaleTimeString()}`,
-    random_id: schedule.id,
+    random_id: Date.now(),
     peer_id: process.env.VK_PEER_ID,
     group_id: process.env.VK_GROUP_ID,
   })
