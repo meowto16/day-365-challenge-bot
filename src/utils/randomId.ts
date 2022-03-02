@@ -1,0 +1,1 @@
+export const randomId = () => Math.ceil(Math.random() * Number.MAX_SAFE_INTEGER)
