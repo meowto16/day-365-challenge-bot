@@ -9,7 +9,7 @@ const schedule = SCHEDULES.NOTIFY_BEFORE_DAY_END
 const scheduler = new Scheduler(schedule.name)
 
 scheduler.exec(async ({ bot }) => {
-  const { data: { notContributed } } = await Challenger.checkContributesToday().catch((err) => {
+  const { data: { contributed, notContributed } } = await Challenger.checkContributesToday().catch((err) => {
     Logger.error('Error while trying to fetch challengers contributes stats', err)
     process.exit(CronStatuses.VK_FETCH_CHECK_TODAY_CONTRIBUTES_ERROR)
   })
@@ -20,12 +20,18 @@ scheduler.exec(async ({ bot }) => {
     process.exit(CronStatuses.SUCCESS)
   }
 
-  const notContributedVkIds = notContributed.map(challenger => challenger.vk).join(' ')
+  const notContributedVkIds = notContributed.map(challenger => challenger.vk)
+  const contributedVkIds = contributed.map(challenger => challenger.vk)
+  const lostPhrase = notContributedVkIds.length > 1 ? 'проиграли' : 'проиграл'
+  const loserPhrase = notContributedVkIds.length > 1 ? 'Проигравшим' : 'Проигравшему'
 
   await bot.execute('messages.send', {
     message: `
-    Осталось 2 часа до конца дня.
-    Не закоммитили: ${notContributedVkIds}`,
+      @all. Этот день настал, ${lostPhrase} пиццу: ${notContributedVkIds.join(' ')}
+      
+      - ${loserPhrase} необходимо заказать пиццу для: ${contributedVkIds.join(' ')}
+      - Проверить: ${process.env.CHALLENGE_SITE}  
+    `,
     random_id: randomId(),
     peer_id: process.env.VK_PEER_ID,
     group_id: process.env.VK_GROUP_ID,

@@ -15,7 +15,8 @@
     "start": "node ./dist/index.js",
     "postinstall": "npm run build",
     "schedule:hello-world": "ts-node ./src/cron/schedules/hello-world.ts",
-    "schedule:notify-before-day-end": "ts-node src/cron/schedules/notify-before-day-end.ts"
+    "schedule:notify-before-day-end": "ts-node src/cron/schedules/notify-before-day-end.ts",
+    "schedule:notify-after-day-end": "ts-node src/cron/schedules/notify-after-day-end.ts"
   },
   "dependencies": {
     "@types/node": "^17.0.21",
