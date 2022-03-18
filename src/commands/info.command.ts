@@ -7,6 +7,7 @@ const infoCommand: VkBotMiddleware = (ctx) => {
 
       Сайт челленджа: ${process.env.CHALLENGE_SITE}
       Github челленджа: ${process.env.CHALLENGE_GITHUB}
+      Навыки для алисы: (в будущем)
     `)
 }
 
